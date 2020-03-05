@@ -12,6 +12,9 @@ import scala.language.implicitConversions
 /**
  * ReadData is used to read the jason data
  */
+
+
+
 object ReadData extends Read {
   /**
    * reaJsonData used to read the data from url
@@ -27,14 +30,14 @@ object ReadData extends Read {
   }
   val jsonUserData: Future[String] = Future {
     ReadData.readJsonData("https://jsonplaceholder.typicode.com/users")
-  }
+  }.fallbackTo(Future(" url not found"))
   val jsonCommentsData: Future[String] = Future {
     ReadData.readJsonData("https://jsonplaceholder.typicode.com/comments")
-  }
+  }.fallbackTo(Future("url not found"))
 
   val jsonPostsData: Future[String] = Future {
     ReadData.readJsonData("https://jsonplaceholder.typicode.com/posts")
-  }
+  }.fallbackTo(Future("url not found"))
 
 
 }

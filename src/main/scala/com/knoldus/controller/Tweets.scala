@@ -37,7 +37,7 @@ object AppDriver extends App {
   val averageLikes = (tweets.flatMap(tweet => Future(tweetsAnalyseObj.getAverageLikesPerTweet(tweet))))
 
   val reTweets = tweets.flatMap(tweet => Future(tweetsAnalyseObj.getReTweetOnTweet(tweet)))
-  val miliseconds=8000
+  val miliseconds=9000
   Thread.sleep(miliseconds)
   println(averageLikes)
   println(reTweets)
